@@ -1,9 +1,7 @@
 <!-- templates/home.html -->
 
-{% extends 'base.html' %}
+{% extends 'dashboard_base.html' %}
 
 {% block content %}
-    <div>
-        <h1> Django IoT Server </h1>
-    </div>
-{% endblock content %}
+    {% include 'example_dashboard_content.html' %}
+{% endblock %}
