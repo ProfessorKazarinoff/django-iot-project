@@ -9,3 +9,6 @@ class HomePageView(TemplateView):
 
 class DocsPageView(TemplateView):
     template_name = 'docs.html'
+
+class LiveChartView(TemplateView):
+    template_name = 'livechart.html'
