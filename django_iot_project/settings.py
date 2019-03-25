@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     
     # project specific apps
     'pages.apps.PagesConfig',
+    'data.apps.DataConfig',
 
     # 3rd party packages
-    'bootstrap4',
+
 ]
 
 MIDDLEWARE = [
