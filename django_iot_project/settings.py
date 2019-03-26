@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # project specific apps
+    # Project specific apps
     'pages.apps.PagesConfig',
     'iot_data.apps.IotDataConfig',
 
     # 3rd party packages
+    'rest_framework',
 
 ]
 

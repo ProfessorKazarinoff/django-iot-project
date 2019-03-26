@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("pages.urls")),
     path("data/", include("iot_data.urls")),
+    path("api/", include("api.urls")),
 ]
