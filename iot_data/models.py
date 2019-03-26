@@ -1,10 +1,10 @@
-# data/models.py
+# iot_data/models.py
 
 from django.db import models
 
 # Create your models here.
 
-class Data(models.Model):
+class IotData(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     channel_num = models.PositiveSmallIntegerField()
     field_num = models.PositiveSmallIntegerField()

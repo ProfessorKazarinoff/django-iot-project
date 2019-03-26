@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     
     # project specific apps
     'pages.apps.PagesConfig',
-    'data.apps.DataConfig',
+    'iot_data.apps.IotDataConfig',
 
     # 3rd party packages
 
