@@ -25,4 +25,5 @@ urlpatterns = [
     path("", include("pages.urls")),
     path("data/", include("iot_data.urls")),
     path("api/", include("api.urls")),
+    path("channel/", include("channels.urls")),
 ]

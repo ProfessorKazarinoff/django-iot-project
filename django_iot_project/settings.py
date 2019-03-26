@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Project specific apps
     'pages.apps.PagesConfig',
     'iot_data.apps.IotDataConfig',
+    'channels.apps.ChannelsConfig',
 
     # 3rd party packages
     'rest_framework',
