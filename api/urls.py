@@ -1,10 +1,15 @@
 # api/urls.py
 
-from django.urls import path
+from django.urls import path, re_path, include
+from rest_framework.routers import DefaultRouter
 
-from . import views
+from .views import IoTDataList, IoTDataDetail, DataViewSet
+
+router = DefaultRouter()
+router.register('data',DataViewSet, base_name='data')
 
 urlpatterns = [
-    path('', views.IoTDataList.as_view()),
-    path('<int:pk>/', views.IoTDataDetail.as_view()),
+    path('', IoTDataList.as_view()),
+    path('<int:pk>/', IoTDataDetail.as_view()),
+    re_path('^', include(router.urls)),
 ]

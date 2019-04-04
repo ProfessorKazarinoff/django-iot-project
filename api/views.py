@@ -14,3 +14,16 @@ class IoTDataList(generics.ListAPIView):
 class IoTDataDetail(generics.RetrieveAPIView):
     queryset = IotData.objects.all()
     serializer_class = IotDataSerializer
+
+from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
+
+from rest_framework.viewsets import GenericViewSet
+
+class DataViewSet(GenericViewSet,  # generic view functionality
+                     CreateModelMixin,  # handles POSTs
+                     RetrieveModelMixin,  # handles GETs for 1 Company
+                     UpdateModelMixin,  # handles PUTs and PATCHes
+                     ListModelMixin):  # handles GETs for many Companies
+
+      serializer_class = IotDataSerializer
+      queryset = IotData.objects.all()

@@ -1,11 +1,12 @@
 # api/serializers.py
 
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 from iot_data.models import IotData
 
 
-class IotDataSerializer(serializers.ModelSerializer):
+class IotDataSerializer(ModelSerializer):
 
     class Meta:
-        fields = ('channel_num', 'field_num', 'data', 'uploaded_by',)
         model = IotData
+        fields = ('channel_num', 'field_num', 'data', 'uploaded_by',)
+        

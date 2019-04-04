@@ -10,7 +10,6 @@ class IotData(models.Model):
     field_num = models.PositiveSmallIntegerField()
     data = models.DecimalField(max_digits=19, decimal_places=10)
     uploaded_by = models.CharField(max_length=30)
-    data_pt_num = models.PositiveIntegerField()
     upload_success = models.BooleanField(default=True)
 
     def __str__(self):
