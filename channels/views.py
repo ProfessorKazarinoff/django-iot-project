@@ -4,9 +4,10 @@ from django.shortcuts import render
 
 from django.views.generic import ListView
 from .models import Channels
+from iot_data.models import IotData
 
 # Create your views here.
 
 class ChannelListView(ListView):
-    model = Channels
+    model = IotData
     template_name = 'channel_listing.html'
