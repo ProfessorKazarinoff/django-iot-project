@@ -9,4 +9,3 @@ class IotDataSerializer(ModelSerializer):
     class Meta:
         model = IotData
         fields = ('channel_num', 'field_num', 'data', 'uploaded_by',)
-        

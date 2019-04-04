@@ -21,9 +21,9 @@ from rest_framework.viewsets import GenericViewSet
 
 class DataViewSet(GenericViewSet,  # generic view functionality
                      CreateModelMixin,  # handles POSTs
-                     RetrieveModelMixin,  # handles GETs for 1 Company
+                     RetrieveModelMixin,  # handles GETs for 1 data point
                      UpdateModelMixin,  # handles PUTs and PATCHes
-                     ListModelMixin):  # handles GETs for many Companies
+                     ListModelMixin):  # handles GETs for many data points
 
       serializer_class = IotDataSerializer
       queryset = IotData.objects.all()
