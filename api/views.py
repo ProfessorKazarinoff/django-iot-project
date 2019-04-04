@@ -5,11 +5,21 @@ from rest_framework import generics
 from iot_data.models import IotData
 from .serializers import IotDataSerializer
 
+from django.views.generic import DetailView
 
 class IoTDataList(generics.ListAPIView):
     queryset = IotData.objects.all()
     serializer_class = IotDataSerializer
 
+# class IoTDataPointDetail(DetailView):
+#     model = IotData
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['now'] = timezone.now()
+#         return context
+    
+#     template_name = 'onepoint.html'
 
 class IoTDataDetail(generics.RetrieveAPIView):
     queryset = IotData.objects.all()
