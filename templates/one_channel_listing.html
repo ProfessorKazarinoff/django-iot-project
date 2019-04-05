@@ -1,0 +1,34 @@
+<!-- templates/one_channel_listing.html -->
+{% extends 'dashboard_base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+    
+  <h2>Channel {{ channel_number }}</h2>
+  <div class="table-responsive">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>time</th>
+          <th>channel</th>
+          <th>field</th>
+          <th>data</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if object_list %}
+        {% for data_pt in object_list %}
+        <tr>
+          <td>{{ data_pt.created_at|naturaltime }}</td>
+          <td>{{ data_pt.channel_num }}</td>
+          <td>{{ data_pt.field_num }}</td>
+          <td>{{ data_pt.data }}</td>
+        </tr>
+       {% endfor %}
+       {% endif %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock content %}

@@ -5,21 +5,7 @@ from .views import ChannelListView #, createmydatabaseentry
 
 urlpatterns = [
     path("list/", ChannelListView.as_view(), name="datalist"),
-    path('list/<int:channel_pk>/', ChannelListView.as_view(), name='channel_list'),
+    path('list/<slug:channel_id>/', ChannelListView.as_view(), name='channel_list'),
+    path('<slug:channel_id>/', ChannelListView.as_view(), name='one_channel_list'),
     #path('entry/create/channel/<entryAttribute1>/field/<entryAttribute2>/data/<entryAttribute3>', createmydatabaseentry, name='create'),
 ]
-"""
-urlpatterns = [
-    path('books/<publisher>/', PublisherBookList.as_view()),
-]
-"""
-
-# from django.urls import path
-# from . import views
-
-# urlpatterns = [
-#     
-#     path('api/entry/<entryID>',views.showmydatabaseentry,name='show'),
-#     path('api/entry/index',views.indexdatabaseentrys,name='index'),
-  
-# ]
