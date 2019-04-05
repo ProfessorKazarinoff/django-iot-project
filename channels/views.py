@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.views.generic import ListView
 from .models import Channels
 from iot_data.models import IotData
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -19,14 +20,14 @@ class ChannelListView(ListView):
 
 #CREATE an entry into the database- often we would only allow POST Requests w/ "if method.POST:...", but doesn't actually matter in practical terms.
 #this is for entryAttributes that are in the url params like you've done...
-def createmydatabaseentry(request, entryAttribute1, entryAttribute2):
+def createmydatabaseentry(request, entryAttribute1, entryAttribute2, entryAttribute3):
   #create a database object/entry using the django Object Relational Manager-ORM. MyDatBaseObject is whatever your Model object is.
-  entry=MyDataBaseObject.objects.create(attr1=entryAttribute1,attr2=entryAttribute2)
+  entry=IotData.objects.create(channel_num=int(entryAttribute1),field_num=int(entryAttribute2), data=float(entryAttribute3), uploaded_by='peter')
   #returns Jsondata to whatever is calling the API. For your purposes it could return whatever, 
   #this just can test that it works correctly. You could also put some logic into the sensor to do something if it doesn't get a 'good' message back.
-  return JsonResponse({'msg':"You successfully added me to the database", 'object':entry},safe=False)
+  return HttpResponse(status=200)
 
-#pull one entry- generally called 'show' in RESTful architecture
+""" #pull one entry- generally called 'show' in RESTful architecture
 def showmydatabaseentry(request,entryID):
   
   #pull the entry from the db using djangos ORM.
@@ -41,9 +42,10 @@ def showmydatabaseentry(request,entryID):
 def indexdatabaseentrys(request):
   
   #pull all the entries from the db
-  entrys=MyDataBaseObject.objects.all()
+  entrys=IotData.objects.all()
   entryarray=[]
   for entry in entrys:
       entryarray.append({'id':entry.id,'attr1':entry.attr1,'attr2'=entry.attr2})
       return JsonResponse({'entrys':entryarray},safe=False)
   
+ """
