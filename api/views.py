@@ -11,24 +11,35 @@ from rest_framework.generics import RetrieveAPIView
 from iot_data.models import IotData
 from .serializers import IotDataSerializer
 
+from channels.models import User, Channel
+
 from django.views.generic import DetailView
 from django.http import HttpResponse, JsonResponse
 
 
-def create_db_entry(request, api_key_str, channel_pk, field_pk, data_str):
+def create_db_entry(request):
     """
     function-based view to write a data point to the database
     """
-    if api_key_str == 'ABC':
-        entry = IotData.objects.create(channel_num=int(channel_pk), field_num=int(field_pk), data=float(data_str),
-                                       uploaded_by='peter')
+    if request.method =='POST':
+        params=request.POST.dict()
+    else:
+        params=request.GET.dict()
+    try:
+        requester=User.objects.get(api_key=params['api_key'])
+    except:
+        return HttpResponse('<h1>invalid api key</h1>')
+    try:
+        channel=Channel.objects.get(pk=params['channel_pk'])    
+    except:
+        return HttpResponse('<h1>channel not found</h1>')
+    if (requester in channel.allowed_users):
+        entry = IotData.objects.create(channel=channel, field_num=params['field_pk'], data=params['data_str'],
+                                       uploaded_by=requester)
         # return HttpResponse('<h1>Success</h1>')
-        response_dict = {
-            "channel": channel_pk,
-            "field": field_pk,
-            "data": data_str
-        }
-        return JsonResponse(response_dict)
+        return JsonResponse(params)
+    except:
+        return HttpResponse('<h1>invalid request</h1>',status=400)
 
     else:
         return HttpResponse('<h1>invalid api key</h1>')
