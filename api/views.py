@@ -34,7 +34,6 @@ def create_db_entry(request, api_key_str, channel_pk, field_pk, data_str):
 
 class LatestDataView(RetrieveAPIView):
     queryset = IotData.objects.all()
-    # add your serializer
     serializer_class = IotDataSerializer
 
     def get_object(self, *args, **kwargs):
@@ -125,9 +124,9 @@ class ChannelQueryList(generics.ListAPIView):
         channel_id = self.request.query_params.get('channel', None)
         field_id = self.request.query_params.get('field', None)
         if field_id is not None and channel_id is not None:
-            queryset = queryset.filter(channel_num=channel_id).filter(field_num=field_id)
+            queryset = queryset.filter(channel_num=channel_id).filter(field_num=field_id).order_by('timestamp').reverse()
         elif field_id is not None and channel_id is None:
-            queryset = queryset.filter(field_num=field_id)
+            queryset = queryset.filter(field_num=field_id).order_by('timestamp').reverse()
         elif channel_id is not None and field_id is None:
-            queryset = queryset.filter(channel_num=channel_id)
+            queryset = queryset.filter(channel_num=channel_id).order_by('timestamp').reverse()
         return queryset
