@@ -13,6 +13,7 @@ from .serializers import IotDataSerializer
 
 from django.views.generic import DetailView, ListView
 from django.http import HttpResponse, JsonResponse
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 def create_db_entry(request, api_key_str, channel_pk, field_pk, data_str):
@@ -105,3 +106,9 @@ class FieldListView(ListAPIView):
         channel_id = self.kwargs.get("channel_id")
         field_id = self.kwargs.get("field_id")
         return IotData.objects.filter(channel_num=channel_id).filter(field_num=field_id)
+
+class FieldListParameterView(ListAPIView):
+    queryset = IotData.objects.all()
+    serializer_class = IotDataSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('channel_num', 'field_num')
