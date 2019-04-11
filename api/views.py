@@ -7,6 +7,7 @@ from rest_framework import generics
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.generics import RetrieveAPIView, ListAPIView, GenericAPIView
+from rest_framework.pagination import LimitOffsetPagination
 
 from iot_data.models import IotData
 from .serializers import IotDataSerializer
@@ -37,18 +38,11 @@ class LatestDataView(RetrieveAPIView):
     serializer_class = IotDataSerializer
 
     def get_object(self, *args, **kwargs):
-        return self.queryset.filter(channel_num=kwargs.get('channel_pk')).latest('created_at')
+        return self.queryset.filter(channel_num=kwargs.get('channel_pk')).latest('timestamp')
 
 
 def latest_data_point_view(request, channel_pk):
-    # latest_entry = IotData.objects.latest('created_at')
-    # result = IotData.objects.all()
     entry = IotData.objects.last()
-    # response_dict = dict(result)
-    # queryset = IotData.objects.all()
-    # latest_entry = queryset.objects.latest('created_at')
-    # add your serializer
-    # serializer_class = IotDataSerializer
     entrydict = {
         'id': entry.id,
         'channel': entry.channel_num,
@@ -125,7 +119,7 @@ class ChannelList(generics.ListAPIView):
 
 class ChannelQueryList(generics.ListAPIView):
     serializer_class = IotDataSerializer
-
+    pagination_class = LimitOffsetPagination
     def get_queryset(self):
         queryset = IotData.objects.all()
         channel_id = self.request.query_params.get('channel', None)
@@ -136,5 +130,4 @@ class ChannelQueryList(generics.ListAPIView):
             queryset = queryset.filter(field_num=field_id)
         elif channel_id is not None and field_id is None:
             queryset = queryset.filter(channel_num=channel_id)
-
         return queryset

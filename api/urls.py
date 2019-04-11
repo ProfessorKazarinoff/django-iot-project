@@ -3,10 +3,7 @@
 from django.urls import path, re_path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import FieldListView, IoTDataList, IoTDataDetail, DataViewSet, IoTDataPointDetail, create_db_entry, LatestDataView, latest_data_point_view
-
-# see https://docs.djangoproject.com/en/2.2/topics/http/urls/#path-converters 
-# for how to include <int:pk>, <str:string>
+from .views import IoTDataList, IoTDataDetail, DataViewSet, create_db_entry, latest_data_point_view
 
 router = DefaultRouter()
 router.register('data', DataViewSet, base_name='data')

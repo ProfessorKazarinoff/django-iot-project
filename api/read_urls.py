@@ -9,5 +9,5 @@ urlpatterns = [
     path('channel=<int:channel_id>&field=<int:field_id>&results=all', FieldListView.as_view()),
     # http://example.com/api/purchases?username=denvercoder9
     re_path('^channel/(?P<channel_id>.+)/$', ChannelList.as_view()),
-    re_path('^query/', ChannelQueryList.as_view()),
+    path('', ChannelQueryList.as_view()),
 ]

@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 class IotData(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     channel_num = models.PositiveSmallIntegerField()
     field_num = models.PositiveSmallIntegerField()
     data = models.DecimalField(max_digits=19, decimal_places=10)
