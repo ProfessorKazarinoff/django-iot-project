@@ -7,11 +7,11 @@ from rest_framework.response import Response
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 from rest_framework.viewsets import GenericViewSet
 
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView, GenericAPIView
 from iot_data.models import IotData
 from .serializers import IotDataSerializer
 
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.http import HttpResponse, JsonResponse
 
 
@@ -74,6 +74,21 @@ class IoTDataDetail(generics.RetrieveAPIView):
     queryset = IotData.objects.all()
     serializer_class = IotDataSerializer
 
+class MultipleFieldLookupMixin(object):
+    """
+    Apply this mixin to any view or viewset to get multiple field filtering
+    based on a `lookup_fields` attribute, instead of the default single field filtering.
+    """
+    def get_object(self):
+        queryset = self.get_queryset()             # Get the base queryset
+        queryset = self.filter_queryset(queryset)  # Apply any filter backends
+        filter = {}
+        for field in self.lookup_fields:
+            if self.kwargs[field]: # Ignore empty fields.
+                filter[field] = self.kwargs[field]
+        obj = get_object_or_404(queryset, **filter)  # Lookup the object
+        self.check_object_permissions(self.request, obj)
+        return obj
 
 class DataViewSet(GenericViewSet,  # generic view functionality
                   CreateModelMixin,  # handles POSTs
@@ -83,3 +98,10 @@ class DataViewSet(GenericViewSet,  # generic view functionality
 
     serializer_class = IotDataSerializer
     queryset = IotData.objects.all()
+
+class FieldListView(ListAPIView):
+    serializer_class = IotDataSerializer
+    def get_queryset(self):
+        channel_id = self.kwargs.get("channel_id")
+        field_id = self.kwargs.get("field_id")
+        return IotData.objects.filter(channel_num=channel_id).filter(field_num=field_id)
