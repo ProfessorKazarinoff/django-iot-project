@@ -21,4 +21,74 @@
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus rutrum tellus pellentesque eu tincidunt tortor. Cras sed felis eget velit aliquet sagittis. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Ante in nibh mauris cursus mattis molestie a iaculis. Mauris sit amet massa vitae. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Posuere morbi leo urna molestie at elementum eu. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames. Sit amet tellus cras adipiscing enim eu turpis egestas pretium. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Id aliquet lectus proin nibh. Convallis aenean et tortor at risus viverra adipiscing at.
 </div>
 
+    <div>
+        <p><h2>Read Data</h2></p>
+        <p> Some text about reading data</p>
+        <h5>HTTP Method</h5>
+        <p><code class="literal">GET</code></p>
+        <h5>Example URL</h5>
+        <p><code class="literal">https://website.com/write/?api_key=3ierf493&channel=23450&field=1&data=1.218</code></p>
+        <h5>URL Parameters</h5>
+        <table class="table table-sm table-striped">
+            <caption>API URL Parameters</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code class="literal">channel=</code></th>
+                    <td>Channel Number, integer</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code class="literal">field=</code></th>
+                    <td>Field Number, integer</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code class="literal">limit=</code></th>
+                    <td>Number of data points to download, integer</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <p><h2>Write Data</h2></p>
+        <p> Some text about writing data</p>
+        <h5>HTTP Method</h5>
+        <p><code class="literal">GET</code></p>
+        <h5>Example URL</h5>
+        <p><code class="literal">https://website.com/write/?api_key=3ierf493&channel=23450&field=1&data=1.218</code></p>
+        <h5>URL Parameters</h5>
+        <table class="table table-sm table-striped">
+            <caption>Write API URL Parameters</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code class="literal">api_key=</code></th>
+                    <td>private API Key, string</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code class="literal">channel=</code></th>
+                    <td>Channel Number, integer</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code class="literal">field=</code></th>
+                    <td>Field Number, integer</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code class="literal">data=</code></th>
+                    <td>Data to upload, float or integer</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 {% endblock content %}
