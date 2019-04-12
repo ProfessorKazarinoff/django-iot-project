@@ -1,6 +1,6 @@
 # channels/views.py
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from iot_data.models import IotData
 
@@ -39,3 +39,8 @@ class FieldListView(ListView):
         context['channel_number'] = channel_number
         context['field_number'] = field_number
         return context
+
+class ChannelSummaryView(ListView):
+    template_name = 'channel_summary.html'
+    model = IotData
+    paginate_by = 6
