@@ -1,6 +1,7 @@
 # channels/views.py
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
+
 from iot_data.models import IotData
 from channels.models import Channel
 
@@ -10,8 +11,7 @@ class ChannelListView(ListView):
 
     def get_queryset(self):
         channel_number = self.kwargs.get("channel_id")
-        #channel_number might have to be int() here, ZK not sure how the ListView works
-        queryset = Channel.objects.get(pk=channel_number).iotdata.all().order_by('created_at').reverse()
+        queryset = IotData.objects.filter(channel_num__exact=channel_number).order_by('timestamp').reverse()
         return queryset
 
     # add extra variable into template
@@ -40,3 +40,8 @@ class FieldListView(ListView):
         context['channel_number'] = channel_number
         context['field_number'] = field_number
         return context
+
+class ChannelSummaryView(ListView):
+    template_name = 'channel_summary.html'
+    model = IotData
+    paginate_by = 6
