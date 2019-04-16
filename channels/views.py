@@ -3,6 +3,7 @@
 from django.views.generic import ListView, DetailView
 
 from iot_data.models import IotData
+from channels.models import Channel
 
 
 class ChannelListView(ListView):
@@ -27,8 +28,8 @@ class FieldListView(ListView):
     def get_queryset(self):
         channel_number = self.kwargs.get("channel_id")
         field_number = self.kwargs.get("field_id")
-        queryset = IotData.objects.filter(channel_num__exact=channel_number).filter(
-            field_num__exact=field_number).order_by('timestamp').reverse()
+        queryset = IotData.objects.filter(channel__exact=channel_number).filter(
+            field_num__exact=field_number).order_by('created_at').reverse()
         return queryset
 
     # add extra variable into template
