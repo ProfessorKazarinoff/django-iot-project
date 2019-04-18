@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'iot_data.apps.IotDataConfig',
     'channels.apps.ChannelsConfig',
+    'users.apps.UsersConfig',
 
     # 3rd party packages
     'rest_framework',

@@ -1,6 +1,7 @@
 # channels/models.py
 
 from django.db import models
+from users.models import User
 
 class Channel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
