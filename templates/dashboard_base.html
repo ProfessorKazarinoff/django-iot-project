@@ -1,0 +1,39 @@
+<!-- templates/dashboard_base.html -->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+{% block head %}
+    {% include 'partials/dashboard_head.html' %}
+{% endblock %}
+
+<body>
+    {% block nav %}
+        {% include 'partials/dashboard_nav.html' %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+                {% block sidebar %}
+                    {% include 'partials/dashboard_sidebar.html' %}
+                {% endblock %}
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    {% block content %}{% endblock %}
+                </main>
+        </div>
+    </div>
+    
+    {% block javascripts %}
+        {% include 'partials/dashboard_javascripts.html' %}
+    {% endblock %}
+    {% block icons %}
+        {% include 'partials/dashboard_icons.html' %}
+    {% endblock %}
+    {% block graphs %}
+        {% include 'dashboard_graphs.html' %}
+    {% endblock %}
+
+</body>
+
+</html>
