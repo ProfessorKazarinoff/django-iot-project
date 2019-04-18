@@ -20,7 +20,7 @@
         {% if object_list %}
         {% for data_pt in object_list %}
         <tr>
-          <td>{{ data_pt.created_at|naturaltime }}</td>
+          <td>{{ data_pt.timestamp|naturaltime }}</td>
           <td>{{ data_pt.channel }}</td>
           <td>{{ data_pt.field_num }}</td>
           <td>{{ data_pt.data }}</td>
