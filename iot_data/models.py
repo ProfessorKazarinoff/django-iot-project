@@ -6,9 +6,14 @@ from channels.models import Channel,User
 # Create your models here.
 
 class IotData(models.Model):
+<<<<<<< HEAD
     channel = models.ForeignKey(Channel,on_delete=models.CASCADE,related_name='iotdata')
     timestamp = models.DateTimeField(auto_now_add=True)
     channel_num = models.PositiveSmallIntegerField()
+=======
+    created_at = models.DateTimeField(auto_now_add=True)
+    channel = models.ForeignKey(Channel,on_delete=models.SET_NULL,related_name='iotdata')
+>>>>>>> 0ba43668421ede56fb066d8f6ed11d0995a7f988
     field_num = models.PositiveSmallIntegerField()
     data = models.DecimalField(max_digits=19, decimal_places=10)
     uploaded_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name='iotdata')
