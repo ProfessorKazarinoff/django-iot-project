@@ -11,7 +11,7 @@ class ChannelListView(ListView):
     def get_queryset(self):
         channel_number = self.kwargs.get("channel_id")
         #channel_number might have to be int() here, ZK not sure how the ListView works
-        queryset = Channel.objects.get(pk=channel_number).iotdata.all().order_by('created_at').reverse()
+        queryset = IotData.objects.get(channel_num=channel_number).iotdata.all().order_by('created_at').reverse()
         return queryset
 
     # add extra variable into template
