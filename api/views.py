@@ -37,8 +37,6 @@ def create_db_entry(request):
                                        uploaded_by=requester)
         # return HttpResponse('<h1>Success</h1>')
         return JsonResponse(params)
-    except:
-        return HttpResponse('<h1>invalid request</h1>',status=400)
 
     else:
         return HttpResponse('<h1>invalid api key</h1>')

@@ -12,7 +12,7 @@ class User(models.Model):
 class Channel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     channel_num = models.PositiveSmallIntegerField()
-    created_by = models.ForeignKey(User,on_delete=models.SET_NULL,related_name='channel')
+    created_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name='channel')
     fields = models.CharField(max_length=30)
     allowed_users=models.ManyToManyField(User,related_name='channels')
 
