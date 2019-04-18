@@ -145,3 +145,6 @@ db.sqlite3
 !.vscode/launch.json
 !.vscode/extensions.json
 .vscode/
+
+### static ###
+static/
