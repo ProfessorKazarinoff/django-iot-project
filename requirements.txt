@@ -7,3 +7,4 @@ pytz==2018.9
 sqlparse==0.3.0
 wincertstore==0.2
 django-heroku==0.3.1
+gunicorn==19.9.0
