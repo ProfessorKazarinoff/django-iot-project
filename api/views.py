@@ -49,18 +49,11 @@ class LatestDataView(RetrieveAPIView):
     serializer_class = IotDataSerializer
 
     def get_object(self, *args, **kwargs):
-        return self.queryset.filter(channel_num=kwargs.get('channel_pk')).latest('created_at')
+        return self.queryset.filter(channel_num=kwargs.get('channel_pk')).latest('timestamp')
 
 
 def latest_data_point_view(request, channel_pk):
-    # latest_entry = IotData.objects.latest('created_at')
-    # result = IotData.objects.all()
     entry = IotData.objects.last()
-    # response_dict = dict(result)
-    # queryset = IotData.objects.all()
-    # latest_entry = queryset.objects.latest('created_at')
-    # add your serializer
-    # serializer_class = IotDataSerializer
     entrydict = {
         'id': entry.id,
         'channel': entry.channel_num,
