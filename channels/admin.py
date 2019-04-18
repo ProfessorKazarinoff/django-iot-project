@@ -4,7 +4,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Channel
+#from .models import Channel
 
 
-admin.site.register(Channel)
+#admin.site.register(Channel)

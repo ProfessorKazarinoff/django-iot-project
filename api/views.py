@@ -11,36 +11,36 @@ from rest_framework.generics import RetrieveAPIView
 from iot_data.models import IotData
 from .serializers import IotDataSerializer
 
-from channels.models import User, Channel
+#from channels.models import User, Channel
 
 from django.views.generic import DetailView
 from django.http import HttpResponse, JsonResponse
 
 
-def create_db_entry(request):
-    """
-    function-based view to write a data point to the database
-    """
-    if request.method =='POST':
-        params=request.POST.dict()
-    else:
-        params=request.GET.dict()
-    try:
-        requester=User.objects.get(api_key=params['api_key'])
-    except:
-        return HttpResponse('<h1>invalid api key</h1>')
-    try:
-        channel=Channel.objects.get(pk=params['channel_pk'])    
-    except:
-        return HttpResponse('<h1>channel not found</h1>')
-    if (requester in channel.allowed_users):
-        entry = IotData.objects.create(channel=channel, field_num=params['field_pk'], data=params['data_str'],
-                                       uploaded_by=requester)
-        # return HttpResponse('<h1>Success</h1>')
-        return JsonResponse(params)
+# def create_db_entry(request):
+#     """
+#     function-based view to write a data point to the database
+#     """
+#     if request.method =='POST':
+#         params=request.POST.dict()
+#     else:
+#         params=request.GET.dict()
+#     try:
+#         requester=User.objects.get(api_key=params['api_key'])
+#     except:
+#         return HttpResponse('<h1>invalid api key</h1>')
+#     try:
+#         channel=Channel.objects.get(pk=params['channel_pk'])    
+#     except:
+#         return HttpResponse('<h1>channel not found</h1>')
+#     if (requester in channel.allowed_users):
+#         entry = IotData.objects.create(channel=channel, field_num=params['field_pk'], data=params['data_str'],
+#                                        uploaded_by=requester)
+#         # return HttpResponse('<h1>Success</h1>')
+#         return JsonResponse(params)
 
-    else:
-        return HttpResponse('<h1>invalid api key</h1>')
+#     else:
+#         return HttpResponse('<h1>invalid api key</h1>')
 
 
 class LatestDataView(RetrieveAPIView):
