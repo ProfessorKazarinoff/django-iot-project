@@ -8,10 +8,9 @@ from channels.models import Channel
 class ChannelListView(ListView):
     template_name = "one_channel_listing.html"
 
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         channel_number = self.kwargs.get("channel_id")
-        #channel_number might have to be int() here, ZK not sure how the ListView works
-        queryset = IotData.objects.get(channel_num=channel_number).iotdata.all().order_by('timestamp').reverse()
+        queryset = IotData.objects.get(channel=channel_number).iotdata.all().order_by('timestamp').reverse()
         return queryset
 
     # add extra variable into template
@@ -25,7 +24,7 @@ class ChannelListView(ListView):
 class FieldListView(ListView):
     template_name = "one_field_listing.html"
 
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         channel_number = self.kwargs.get("channel_id")
         field_number = self.kwargs.get("field_id")
         queryset = IotData.objects.filter(channel__exact=channel_number).filter(
@@ -40,3 +39,8 @@ class FieldListView(ListView):
         context['channel_number'] = channel_number
         context['field_number'] = field_number
         return context
+
+class ChannelSummaryView(ListView):
+    template_name = "docs.html"
+    
+    model = IotData

@@ -1,13 +1,13 @@
 # iot_data/models.py
 
 from django.db import models
-from channels.models import Channel,User
+from channels.models import Channel
+from users.models import User
+
 
 class IotData(models.Model):
     channel = models.ForeignKey(Channel,on_delete=models.CASCADE,related_name='iotdata')
     timestamp = models.DateTimeField(auto_now_add=True)
-    channel_num = models.PositiveSmallIntegerField()
-    channel = models.ForeignKey(Channel,on_delete=models.CASCADE,related_name='iotdata')
     field_num = models.PositiveSmallIntegerField()
     data = models.DecimalField(max_digits=19, decimal_places=10)
     uploaded_by = models.ForeignKey(User,on_delete=models.CASCADE,related_name='iotdata')
