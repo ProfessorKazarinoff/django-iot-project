@@ -18,7 +18,102 @@
         </div>
       </div>
 <div>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus rutrum tellus pellentesque eu tincidunt tortor. Cras sed felis eget velit aliquet sagittis. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui. Ante in nibh mauris cursus mattis molestie a iaculis. Mauris sit amet massa vitae. Donec adipiscing tristique risus nec feugiat in fermentum posuere. Posuere morbi leo urna molestie at elementum eu. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames. Sit amet tellus cras adipiscing enim eu turpis egestas pretium. Scelerisque eu ultrices vitae auctor eu augue ut lectus arcu. Id aliquet lectus proin nibh. Convallis aenean et tortor at risus viverra adipiscing at.
+<p>
+    This Internet of Things (IoT) server is a cloud-based platform that allows you to upload, download, and visualize live data streams. You can send data to the IoT server from a web browser, a phone, tablet or a WiFi / network-enabled microcontroller. You can read data off of the IoT Server in a webpage or download json data from the server a GET request. This IoT Server enables engineers, scientists, and students to prototype and build IoT systems without setting up their own server or developing web software themselves.
+</p>
 </div>
+
+<div>
+<h2>Read Data</h2>
+</div>
+<div>
+  <p>
+    Data can be read off the IoT Server using an HTTP GET request. A GET request is submitted by a web browser when the browser goes to the specified URL. 
+  </p>
+
+</div>
+
+<div>
+    <h4>HTTP Method</h4>
+    <p><code>GET</code></p>
+</div>
+
+<div>
+  <h4>URL</h4>
+  <p><code>https://engr114.org/api/?channel=1&field=3&limit=10&format=json</code></p>
+</div>
+
+<div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="28%"><col class="tcol2" width="72%"></colgroup><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>
+    <p><code class="literal"><em class="replaceable"><code>&lt;channel&gt;</code></em></code></p>
+</td><td>
+    <p>(Required) Channel ID for the channel of interest, specified
+        as an integer.</p>
+</td></tr><tr><td>
+    <p><code class="literal"><em class="replaceable"><code>&lt;field&gt;</code></em></code></p>
+</td><td>
+    <p>Field ID for the channel of interest, specified as an integer</p>
+</td></tr><tr><td>
+    <p><code class="literal"><em class="replaceable"><code>&lt;format&gt;</code></em></code></p>
+</td><td>
+    <p>(Required) Format for the HTTP response, specified as
+            <code class="literal">json</code>, <code class="literal">xlsx</code>, or
+            <code class="literal">csv</code>.</p>
+</td></tr>
+
+<tr><td>
+    <p><code class="literal"><em class="replaceable"><code>&lt;limit&gt;</code></em></code></p>
+</td><td>
+    <p>Limit for the number of data points returned, specified as an integer</p>
+</td></tr>
+
+</tbody></table></div>
+
+<div>
+  <h2>Write Data</h2>
+</div>
+
+<div>
+    <p>
+      Data can be written and saved on the IoT Server using an HTTP GET request. A GET request is submitted by a web browser when the browser goes to the specified URL. 
+    </p>
+  
+  </div>
+
+<div>
+    <h4>HTTP Method</h4>
+    <p><code>GET</code></p>
+</div>
+
+<div>
+  <h4>URL</h4>
+  <p><code>https://engr114.org/api/?api_key=Ab5831ur6g2&channel=1&field=3&data=20.4</code></p>
+  </div>
+
+  <div class="table-responsive"><table class="table table-condensed"><colgroup><col class="tcol1" width="28%"><col class="tcol2" width="72%"></colgroup><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td>
+      <p><code class="literal"><em class="replaceable"><code>&lt;api_key&gt;</code></em></code></p>
+  </td><td>
+      <p>(Required) API key for the channel of interest, specified
+          as a string.</p>
+  </td></tr>
+  <tr><td>
+      <p><code class="literal"><em class="replaceable"><code>&lt;channel&gt;</code></em></code></p>
+  </td><td>
+      <p>(Required) Channel ID for the channel of interest, specified
+          as an integer.</p>
+  </td></tr>
+  
+  <tr><td>
+      <p><code class="literal"><em class="replaceable"><code>&lt;field&gt;</code></em></code></p>
+  </td><td>
+      <p>(Required) Field ID for the channel of interest, specified as an integer</p>
+  </td></tr>
+
+  <tr><td>
+      <p><code class="literal"><em class="replaceable"><code>&lt;data&gt;</code></em></code></p>
+  </td><td>
+      <p>(Required) Data for the channel and field of interest, specified as an integer or float</p>
+  </td></tr>
+
+</tbody></table></div>
 
 {% endblock content %}
