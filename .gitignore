@@ -146,9 +146,5 @@ db.sqlite3
 !.vscode/extensions.json
 .vscode/
 
-### static ###
-static/
-staticfiles/
-
 ### PyCharm ###
 .idea/
