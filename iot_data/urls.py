@@ -3,6 +3,4 @@
 from django.urls import path
 from .views import IotDataPageView
 
-urlpatterns = [
-    path("list/", IotDataPageView.as_view(), name="datalist"),
-]
+urlpatterns = [path("list/", IotDataPageView.as_view(), name="datalist")]

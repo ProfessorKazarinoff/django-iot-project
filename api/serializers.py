@@ -5,7 +5,6 @@ from iot_data.models import IotData
 
 
 class IotDataSerializer(ModelSerializer):
-
     class Meta:
         model = IotData
-        fields = ('channel_num', 'field_num', 'data', 'uploaded_by',)
+        fields = ("timestamp", "channel_num", "field_num", "data", "user")
