@@ -20,8 +20,24 @@ class LiveChartView(TemplateView):
 
 class ChannelListView(ListView):
     model = IotData
-    paginate_by = 6
-    template_name = "channel_listing.html"
+    paginate_by = 10
+    template_name = "channels_listing.html"
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = IotData.objects.values("channel_num").distinct()
+
+        return queryset
+
+
+class UserListView(ListView):
+    model = IotData
+    paginate_by = 10
+    template_name = "users_listing.html"
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = IotData.objects.values("user").distinct()
+
+        return queryset
 
 
 class OneChannelView(ListView):

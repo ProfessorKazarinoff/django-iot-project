@@ -1,4 +1,4 @@
-<!-- templates/one_channel_listing.html -->
+<!-- templates/channel_listing.html -->
 {% extends 'dashboard_base.html' %}
 
 {% load humanize %}
@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-    <h2>Channel {{ channel_number }}</h2>
+    <h1 class="h2">Channel Listing</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
         <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -19,7 +19,6 @@
     </div>
   </div>
 
-  
   <div class="table-responsive">
     <table class="table table-hover table-striped">
       <thead>
@@ -31,7 +30,6 @@
         </tr>
       </thead>
       <tbody>
-        {% if object_list %}
         {% for data_pt in object_list %}
         <tr>
           <td>{{ data_pt.timestamp|naturaltime }}</td>
@@ -40,7 +38,6 @@
           <td>{{ data_pt.data }}</td>
         </tr>
        {% endfor %}
-       {% endif %}
       </tbody>
     </table>
   </div>

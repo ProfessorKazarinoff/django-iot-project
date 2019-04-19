@@ -5,11 +5,25 @@
 
 {% block content %}
 
-  <h2>Raw Data Table</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Users Listing</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button class="btn btn-sm btn-outline-secondary">Share</button>
+        <button class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <span data-feather="calendar"></span>
+        This week
+      </button>
+    </div>
+  </div>
+
   <div class="table-responsive">
     <table class="table table-hover table-striped">
       <thead>
         <tr>
+          <th>user</th>
           <th>time</th>
           <th>channel</th>
           <th>field</th>
@@ -19,6 +33,7 @@
       <tbody>
         {% for data_pt in object_list %}
         <tr>
+          <td>{{ data_pt.user }}</td>
           <td>{{ data_pt.timestamp|naturaltime }}</td>
           <td>{{ data_pt.channel_num }}</td>
           <td>{{ data_pt.field_num }}</td>
