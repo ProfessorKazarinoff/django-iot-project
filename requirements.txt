@@ -1,4 +1,4 @@
-certifi==2019.3.9
+certifi==2022.12.7
 Django>=2.2.4
 django-filter==2.1.0
 djangorestframework==3.9.2
